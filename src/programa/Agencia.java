@@ -1,5 +1,6 @@
 package programa;
 
+import programa.Conta;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -75,6 +76,38 @@ public class Agencia {
         operacoes();
     }
     
+    private static Conta encontrarConta(int numeroConta) {
+        Conta conta = null;
+        if(contasBancarias.size() > 0) {
+            for(Conta c: contasBancarias) {
+                if(c.getNumeroConta() == numeroConta);
+                conta= c;
+            }
+        }
+        return conta;
+    }    
+    
+    public static void depositar() {
+
+        int numeroConta = 
+                Integer.parseInt(JOptionPane.showInputDialog(null, "Número da conta para depósito: "));
+
+        Conta conta = encontrarConta(numeroConta);
+
+        if(conta != null) {
+            System.out.println("Quanto você deseja depositar? ");
+            Double valorDeposito = 
+                    Double.parseDouble((JOptionPane.showInputDialog(null, "Valor do depósito: ")));
+            conta.deposito(valorDeposito);
+
+            JOptionPane.showMessageDialog(null,"Valor depositado!!!");
+        }else {
+            JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o depósito!!!");
+        }
+        operacoes();
+        }
+        
+    
     public static void sacar() {
         int numero_conta = 
                 Integer.parseInt(JOptionPane.showInputDialog("Numero da conta para realizar o saque: "));
@@ -116,41 +149,12 @@ public class Agencia {
             }
 
         
-    }
+    }    
 
-    public static void depositar() {
-
-        int numero_conta = Integer.parseInt(JOptionPane.showInputDialog(null, "Número da conta para depósito: "));
-
-        Conta conta = encontrarConta(numero_conta);
-
-        if(conta != null) {
-            System.out.println("Quanto você deseja depositar? ");
-            Double valorDeposito = 
-                    Double.parseDouble((JOptionPane.showInputDialog(null, "Valor do depósito: ")));
-            conta.deposito(valorDeposito);
-
-            JOptionPane.showMessageDialog(null,"Valor depositado!!!");
-        }else {
-            JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o depósito!!!");
-        }
-        operacoes();
-        }
-        
-    private static Conta encontrarConta(int numero_conta) {
-        Conta conta = null;
-        if(contasBancarias.size() > 0) {
-            for(Conta c: contasBancarias) {
-                if(c.getNumero_conta() == numero_conta);
-                conta= c;
-            }
-        }
-        return conta;
-    }
     public static void listarContas() {
         if(contasBancarias.size() > 0) {
             for (Conta conta : contasBancarias) {
-                System.out.println(conta);
+                JOptionPane.showMessageDialog(null, conta);
             }
         }else {
             JOptionPane.showMessageDialog(null,"Não existem contas cadastradas ainda.");

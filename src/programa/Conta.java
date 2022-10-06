@@ -11,13 +11,14 @@ public class Conta {
     private static int counterContas = 1;
 
     private int agencia;
-    private int numero_conta;
+    private int numeroConta;
     private Cliente cliente;
     private double saldo = 0.0;
 
     public Conta(Cliente cliente) {
         this.agencia = counterContas;
-        this.numero_conta = counterContas;
+        this.cliente = cliente;
+        this.numeroConta = counterContas;
         counterContas += 1;
     }
 
@@ -37,12 +38,12 @@ public class Conta {
         this.agencia = agencia;
     }
 
-    public int getNumero_conta() {
-        return numero_conta;
+    public int getNumeroConta() {
+        return numeroConta;
     }
 
-    public void setNumero_conta(int numero_conta) {
-        this.numero_conta = numero_conta;
+    public void setNumero_conta(int numeroConta) {
+        this.numeroConta = numeroConta;
     }
 
     public Cliente getCliente() {
@@ -62,7 +63,7 @@ public class Conta {
     }
 
     public String toString() {
-        return "\nNumero da conta: " + this.getNumero_conta() +
+        return "\nNumero da conta: " + this.getNumeroConta() +
                 "\nNome: " + this.cliente.getNome() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nEndereço: " + this.cliente.getEndereco() +
@@ -98,4 +99,6 @@ public class Conta {
             JOptionPane.showMessageDialog(null,"Não foi possivel realizar o saque!");
         }
     }
+
+
 }

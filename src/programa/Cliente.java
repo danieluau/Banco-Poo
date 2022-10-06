@@ -1,7 +1,10 @@
 package programa;
 
+
 public class Cliente {
-        
+
+    private static int counter =1;
+
     private String nome;
     private String cpf;
     private String data_de_nascimento;
@@ -16,6 +19,7 @@ public class Cliente {
         this.cpf = cpf;
         this.data_de_nascimento = data_de_nascimento;
         this.endereco = endereco;
+        counter +=1;
     }
 
     public String getNome() {
@@ -38,8 +42,8 @@ public class Cliente {
         return data_de_nascimento;
     }
 
-    public void setData_de_nascimento(String data_de_nascimento) {
-        this.data_de_nascimento = data_de_nascimento;
+    public void setData_de_nascimento(String string) {
+        this.data_de_nascimento = string;
     }
 
     public String getEndereco() {
