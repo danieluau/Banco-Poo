@@ -68,12 +68,12 @@ public class Conta {
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nEndereço: " + this.cliente.getEndereco() +
                 "\nData de Nascimento: " + this.cliente.getData_de_nascimento() +
-                "\nSaldo: " + Utils.doubleToString(this.getSaldo()) +
+                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
                 "\n";
     }
 
     public void deposito(Double valor) {
-        if (valor > 0.0) {
+        if (valor > 0) {
             setSaldo(getSaldo() + valor);
             JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso");
         } else {
@@ -83,6 +83,7 @@ public class Conta {
 
     public void sacar(Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
+            setSaldo(getSaldo() - valor);
             JOptionPane.showMessageDialog(null,"Saque realizado com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Não foi possivel realizar o saque!");
@@ -96,7 +97,7 @@ public class Conta {
             contaParaDeposito.saldo = contaParaDeposito.getSaldo() + valor;
             JOptionPane.showMessageDialog(null,"Tranferencia realizada com sucesso");
         } else {
-            JOptionPane.showMessageDialog(null,"Não foi possivel realizar o saque!");
+            JOptionPane.showMessageDialog(null,"Não foi possivel realizar a transferencia!");
         }
     }
 

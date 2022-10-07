@@ -1,6 +1,5 @@
 package programa;
 
-import programa.Conta;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -41,7 +40,7 @@ public class Agencia {
             transferir();
             break;        
         case 4:
-            depositar();
+            deposito();
             break;       
         case 5:
             listarContas();
@@ -87,7 +86,7 @@ public class Agencia {
         return conta;
     }    
     
-    public static void depositar() {
+    public static void deposito() {
 
         int numeroConta = 
                 Integer.parseInt(JOptionPane.showInputDialog(null, "Número da conta para depósito: "));
@@ -99,8 +98,6 @@ public class Agencia {
             Double valorDeposito = 
                     Double.parseDouble((JOptionPane.showInputDialog(null, "Valor do depósito: ")));
             conta.deposito(valorDeposito);
-
-            JOptionPane.showMessageDialog(null,"Valor depositado!!!");
         }else {
             JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o depósito!!!");
         }

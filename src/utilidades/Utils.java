@@ -11,8 +11,5 @@ public class Utils {
         return formatarValores.format(valor);
     }
 
-    public static String doubleToString(double saldo) {
-        return null;
-    }
-
 }
+
