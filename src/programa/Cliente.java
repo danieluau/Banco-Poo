@@ -8,18 +8,22 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String data_de_nascimento;
-    private String endereco;
-
-    public Cliente(){
-
-    }
+    private Enderecos enderecos;
     
-    public Cliente(String nome, String cpf, String data_de_nascimento, String endereco) {
+    
+    public Cliente(Enderecos enderecos) {
+        
+    }
+
+    public Cliente(String nome, String cpf, String data_de_nascimento, Enderecos enderecos) {
         this.nome = nome;
         this.cpf = cpf;
         this.data_de_nascimento = data_de_nascimento;
-        this.endereco = endereco;
-        counter +=1;
+        this.enderecos = enderecos;
+        
+    }    
+
+    public Cliente() {
     }
 
     public String getNome() {
@@ -46,22 +50,25 @@ public class Cliente {
         this.data_de_nascimento = string;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public Enderecos getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEnderecos(Enderecos string) {
+        this.enderecos = string;
     }
+         
 
     public String toString() {
         return 
         "\nNome: " + this.getNome() +       
         "\nCPF: " + this.getCpf() +        
-        "\nEndereço: " + this.getEndereco() +
+        "\nEndereco: " + this.getEnderecos() +
         "\nData de Nascimento: " + this.getData_de_nascimento();
         }
-    
-        
-          
+
+    public void setEnderecos(String showInputDialog) {
+    }
+
+
 }

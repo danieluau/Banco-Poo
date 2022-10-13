@@ -59,6 +59,7 @@ public class Agencia {
 
     public static void criarConta() {
         Cliente cliente = new Cliente();
+
         
         cliente.setNome(JOptionPane.showInputDialog("Nome: "));
         
@@ -66,7 +67,7 @@ public class Agencia {
         
         cliente.setData_de_nascimento(JOptionPane.showInputDialog("Data de Nascimento: "));
         
-        cliente.setEndereco(JOptionPane.showInputDialog("Endereço: "));
+        cliente.setEnderecos(JOptionPane.showInputDialog("Endereço: "));
 
         Conta conta = new Conta(cliente);
 
@@ -94,7 +95,6 @@ public class Agencia {
         Conta conta = encontrarConta(numeroConta);
 
         if(conta != null) {
-            System.out.println("Quanto você deseja depositar? ");
             Double valorDeposito = 
                     Double.parseDouble((JOptionPane.showInputDialog(null, "Valor do depósito: ")));
             conta.deposito(valorDeposito);

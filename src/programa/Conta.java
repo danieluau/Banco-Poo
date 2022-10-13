@@ -53,7 +53,7 @@ public class Conta {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    
     public double getSaldo() {
         return saldo;
     }
@@ -66,7 +66,6 @@ public class Conta {
         return "\nNumero da conta: " + this.getNumeroConta() +
                 "\nNome: " + this.cliente.getNome() +
                 "\nCPF: " + this.cliente.getCpf() +
-                "\nEndereço: " + this.cliente.getEndereco() +
                 "\nData de Nascimento: " + this.cliente.getData_de_nascimento() +
                 "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
                 "\n";
