@@ -8,7 +8,7 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String data_de_nascimento;
-    private String endereco;
+   // private String endereco;
 
 
 
@@ -19,11 +19,16 @@ public class Cliente {
 
     }
     
-    public Cliente(String nome, String cpf, String data_de_nascimento, String endereco) {
+    
+    public Cliente(Enderecos enderecos) {
+        
+    }
+
+    public Cliente(String nome, String cpf, String data_de_nascimento, Enderecos enderecos) {
         this.nome = nome;
         this.cpf = cpf;
         this.data_de_nascimento = data_de_nascimento;
-        this.endereco = endereco;
+    //    this.endereco = endereco;
     }
 
     public String getNome() {
@@ -50,19 +55,20 @@ public class Cliente {
         this.data_de_nascimento = string;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public Enderecos getEnderecos() {
+        return getEnderecos();
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+//    public void setEnderecos(Enderecos string) {
+//        this.endereco = string;
+ //   }
+         
 
     public String toString() {
         return 
         "\nNome: " + this.getNome() +       
         "\nCPF: " + this.getCpf() +        
-        "\nEndereço: " + this.getEndereco() +
+        "\nEndereco: " + this.getEnderecos() +
         "\nData de Nascimento: " + this.getData_de_nascimento();
         }
 
