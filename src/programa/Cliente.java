@@ -1,14 +1,19 @@
 package programa;
 
 
+
 public class Cliente {
 
-    private static int counter =1;
 
     private String nome;
     private String cpf;
     private String data_de_nascimento;
     private String endereco;
+
+
+
+
+
 
     public Cliente(){
 
@@ -19,7 +24,6 @@ public class Cliente {
         this.cpf = cpf;
         this.data_de_nascimento = data_de_nascimento;
         this.endereco = endereco;
-        counter +=1;
     }
 
     public String getNome() {
@@ -61,7 +65,6 @@ public class Cliente {
         "\nEndereço: " + this.getEndereco() +
         "\nData de Nascimento: " + this.getData_de_nascimento();
         }
-    
-        
+
           
 }

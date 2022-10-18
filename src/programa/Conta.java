@@ -16,7 +16,6 @@ public class Conta {
     private double saldo = 0.0;
 
     public Conta(Cliente cliente) {
-        this.agencia = counterContas;
         this.cliente = cliente;
         this.numeroConta = counterContas;
         counterContas += 1;
@@ -42,7 +41,7 @@ public class Conta {
         return numeroConta;
     }
 
-    public void setNumero_conta(int numeroConta) {
+    public void setNumeroConta(int numeroConta) {
         this.numeroConta = numeroConta;
     }
 
@@ -64,6 +63,7 @@ public class Conta {
 
     public String toString() {
         return "\nNumero da conta: " + this.getNumeroConta() +
+                "\nAgencia: " +this.getAgencia() +
                 "\nNome: " + this.cliente.getNome() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nEndereço: " + this.cliente.getEndereco() +

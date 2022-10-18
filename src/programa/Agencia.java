@@ -123,18 +123,19 @@ public class Agencia {
     }
 
     public static void transferir() {
-            int numero_contaRemetente = 
+            int numeroContaRemetente = 
                     Integer.parseInt(JOptionPane.showInputDialog("Numero da conta destino para realizar a transferencia: "));
-            Conta contaRemetente = encontrarConta(numero_contaRemetente);
+            Conta contaRemetente = encontrarConta(numeroContaRemetente);
 
             if(contaRemetente != null) {
-                int numero_contaDestino = 
-                Integer.parseInt(JOptionPane.showInputDialog("Numero da conta destino para realizar a transferencia: "));
+                int numeroContaDestino = 
+                        Integer.parseInt(JOptionPane.showInputDialog("Numero da conta destino para realizar a transferencia: "));
 
-                Conta contaDestino = encontrarConta(numero_contaDestino);
+                Conta contaDestino = encontrarConta(numeroContaDestino);
 
                 if(contaDestino != null) {
-                    Double valor = Double.parseDouble(JOptionPane.showInputDialog("Valor da transferência: "));
+                    Double valor = 
+                            Double.parseDouble(JOptionPane.showInputDialog("Valor da transferência: "));
 
                     contaRemetente.transferir(contaDestino, valor);
                 }else {
