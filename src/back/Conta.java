@@ -52,29 +52,23 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    private String getUf() {
-        return null;
+    public String getClienteEnderecocidade() {
+        return this.cliente.getCidade();
     }
 
-    private String getCidade() {
-        return null;
+    public String getClienteEnderecoUf() {
+        return this.cliente.getUf();
     }
 
-    private String getBairro() {
-        return null;
+    public String getClienteLogradouroEndereco() {
+        return this.cliente.getLogradouro();
     }
-
-    private String getNumeroCasa() {
-        return null;
+    public int getClienteNumeroEndereco(){
+        return this.cliente.getNumeroCasa();
     }
-
-    private String getLogradouro() {
-        return null;
+    public String getClienteBairroEndereco(){
+        return this.cliente.getBairro();
     }
-
-
-
-
 
     public void sacar(Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
@@ -113,13 +107,14 @@ public class Conta {
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
                 "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
-                "\nLogradouro: " + this.getLogradouro() +
-                "\nNumero: " + this.getNumeroCasa() +
-                "\nBairro: " + this.getBairro() +
-                "\nCidade: " + this.getCidade() +
-                "\nUF : " + this.getUf() +
+                "\nLogradouro: " + this.cliente.getLogradouro() +
+                "\nNumero: " + this.cliente.getNumeroCasa() +
+                "\nBairro: " + this.cliente.getBairro() +
+                "\nCidade: " + this.cliente.getCidade() +
+                "\nUF : " + this.cliente.getUf() +
                 "\n";
     }
+
 
 
 

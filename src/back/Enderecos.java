@@ -16,6 +16,7 @@ public class Enderecos {
         this.cidade = cidade;
         this.uf = uf;
     }
+    
     public String getLogradouro() {
         return logradouro;
     }
@@ -47,16 +48,5 @@ public class Enderecos {
     public void setUf(String uf) {
         this.uf = uf;
     }
-
-
-    public String toString() {
-        return "\nLogradouro: " + this.getLogradouro() +
-                "\nNumero: " + this.getNumeroCasa() +
-                "\nBairro: " + this.getBairro() +
-                "\nCidade: " + this.getCidade() +
-                "\nUF : " + this.getUf() +
-                "\n";
-
-}
 
 }
