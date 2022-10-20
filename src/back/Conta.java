@@ -10,7 +10,7 @@ public class Conta {
 
     private static int counterContas = 1;
 
-    private static int counterAgencia = 1234;
+    private static int counterAgencia = 1001;
 
     private int agencia;
     private int numeroConta;
@@ -22,6 +22,7 @@ public class Conta {
         this.cliente = cliente;
         this.numeroConta = counterContas;
         counterContas += 1;
+        counterAgencia += 1;
     }
 
     public static int getCounterContas() {
