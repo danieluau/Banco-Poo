@@ -33,24 +33,12 @@ public class Conta {
         return agencia;
     }
 
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
-    }
-
     public int getNumeroConta() {
         return numeroConta;
     }
-
-    public void setNumeroConta(int numeroConta) {
-        this.numeroConta = numeroConta;
-    }
-
+    
     public Cliente getCliente() {
         return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
     
     public double getSaldo() {
@@ -61,23 +49,42 @@ public class Conta {
         this.saldo = saldo;
     }
 
+    private String getUf() {
+        return null;
+    }
+
+    private String getCidade() {
+        return null;
+    }
+
+    private String getBairro() {
+        return null;
+    }
+
+    private String getNumeroCasa() {
+        return null;
+    }
+
+    private String getLogradouro() {
+        return null;
+    }
+
+
+
+
     public String toString() {
         return "\nNumero da conta: " + this.getNumeroConta() +
                 "\nAgencia: " +this.getAgencia() +
                 "\nNome: " + this.cliente.getNome() +
                 "\nCPF: " + this.cliente.getCpf() +
-                "\nData de Nascimento: " + this.cliente.getData_de_nascimento() +
+                "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
                 "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
+                "\nLogradouro: " + this.getLogradouro() +
+                "\nNumero: " + this.getNumeroCasa() +
+                "\nBairro: " + this.getBairro() +
+                "\nCidade: " + this.getCidade() +
+                "\nUF : " + this.getUf() +
                 "\n";
-    }
-
-    public void deposito(Double valor) {
-        if (valor > 0) {
-            setSaldo(getSaldo() + valor);
-            JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso");
-        } else {
-            JOptionPane.showMessageDialog(null,"Não foi possível realizar o seu depósito");
-        }
     }
 
     public void sacar(Double valor) {
@@ -99,6 +106,22 @@ public class Conta {
             JOptionPane.showMessageDialog(null,"Não foi possivel realizar a transferencia!");
         }
     }
+    public void deposito(Double valor) {
+        if (valor > 0) {
+            setSaldo(getSaldo() + valor);
+            JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null,"Não foi possível realizar o seu depósito");
+        }
+    }
+
+    public static void add(Conta conta) {
+    }
+
+
+
+
+
 
 
 }

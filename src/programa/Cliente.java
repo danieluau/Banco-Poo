@@ -1,34 +1,21 @@
 package programa;
 
-
+import java.time.LocalDate;
 
 public class Cliente {
 
 
     private String nome;
     private String cpf;
-    private String data_de_nascimento;
-   // private String endereco;
-
-
-
-
-
-
-    public Cliente(){
-
-    }
+    private final LocalDate dataDeNascimento;
+    private Enderecos enderecos;
     
-    
-    public Cliente(Enderecos enderecos) {
-        
-    }
 
-    public Cliente(String nome, String cpf, String data_de_nascimento, Enderecos enderecos) {
+    public Cliente(String nome, String cpf, LocalDate dataDeNascimento, Enderecos enderecos) {
         this.nome = nome;
         this.cpf = cpf;
-        this.data_de_nascimento = data_de_nascimento;
-    //    this.endereco = endereco;
+        this.dataDeNascimento = dataDeNascimento;
+        this.enderecos = enderecos;
     }
 
     public String getNome() {
@@ -47,30 +34,33 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public String getData_de_nascimento() {
-        return data_de_nascimento;
-    }
-
-    public void setData_de_nascimento(String string) {
-        this.data_de_nascimento = string;
+    public LocalDate getDataDeNascimento() {
+        return dataDeNascimento;
     }
 
     public Enderecos getEnderecos() {
         return getEnderecos();
     }
 
-//    public void setEnderecos(Enderecos string) {
-//        this.endereco = string;
- //   }
-         
+    public String getLogradouro() {
+        return this.enderecos.getLogradouro();
+    }
+    public int getNumeroCasa() {
+        return this.enderecos.getNumeroCasa();
+    }
+    public String getBairro() {
+        return this.enderecos.getBairro();
+    }
+    public String getCidade() {
+        return this.enderecos.getCidade();
+    }
+    public String getUf() {
+        return this.enderecos.getUf();
+    }
+    
 
-    public String toString() {
-        return 
-        "\nNome: " + this.getNome() +       
-        "\nCPF: " + this.getCpf() +        
-        "\nEndereco: " + this.getEnderecos() +
-        "\nData de Nascimento: " + this.getData_de_nascimento();
-        }
+    public void setEnderecos(String showInputDialog) {
+    }
 
           
 }

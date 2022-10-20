@@ -3,15 +3,15 @@ package programa;
 public class Enderecos {
     
     private String logradouro;
-    private int numero;
+    private int numeroCasa;
     private String bairro;
     private String cidade;
     private String uf;
     
     
-    public Enderecos(String logradouro, int numero, String bairro, String cidade, String uf) {
+    public Enderecos(String logradouro, int numeroCasa, String bairro, String cidade, String uf) {
         this.logradouro = logradouro;
-        this.numero = numero;
+        this.numeroCasa = numeroCasa;
         this.bairro = bairro;
         this.cidade = cidade;
         this.uf = uf;
@@ -19,44 +19,44 @@ public class Enderecos {
     public String getLogradouro() {
         return logradouro;
     }
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-    public int getNumero() {
-        return numero;
-    }
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public int getNumeroCasa() {
+        return numeroCasa;
     }
     public String getBairro() {
         return bairro;
     }
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
     public String getCidade() {
         return cidade;
     }
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
     public String getUf() {
         return uf;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+    public void setNumeroCasa(int numeroCasa) {
+        this.numeroCasa = numeroCasa;
+    }
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
     public void setUf(String uf) {
         this.uf = uf;
     }
 
-    public Enderecos() {
-    }
 
     public String toString() {
         return "\nLogradouro: " + this.getLogradouro() +
-                "\nNumero: " + this.getNumero() +
+                "\nNumero: " + this.getNumeroCasa() +
                 "\nBairro: " + this.getBairro() +
                 "\nCidade: " + this.getCidade() +
                 "\nUF : " + this.getUf() +
                 "\n";
-    }
+
+}
 
 }

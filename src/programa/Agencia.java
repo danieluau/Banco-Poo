@@ -1,6 +1,7 @@
 package programa;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,24 +33,19 @@ public class Agencia {
         switch(operacao){
         case 1:
             criarConta();
-            break;
         case 2:
-            sacar();
-            break;        
+            sacar();      
         case 3:
-            transferir();
-            break;        
+            transferir();      
         case 4:
-            deposito();
-            break;       
+            deposito(); 
         case 5:
-            listarContas();
-            break;        
+            listarContas();       
         case 6:
         JOptionPane.showMessageDialog(null, "OK. Obrigado por usar nossa plataforma!!!");
         System.exit(0);
         default:
-            JOptionPane.showMessageDialog(null,"Opção Inválida!");
+            JOptionPane.showMessageDialog(null,"Opção Inválida!!! escolha alguma das existentes no menu.");
             operacoes();
             break;          
         }
@@ -57,22 +53,37 @@ public class Agencia {
 
     }
 
-    public static void criarConta() {
-        Cliente cliente = new Cliente();
+    private static void criarConta() {
 
+        String nomeCliente = JOptionPane.showInputDialog("Qual o seu nome? ");
         
-        cliente.setNome(JOptionPane.showInputDialog("Nome: "));
+        String cpfCliente = JOptionPane.showInputDialog("Qual o seu CPF? ");
         
-        cliente.setCpf(JOptionPane.showInputDialog("CPF: "));
+        String data = JOptionPane.showInputDialog("Que dia você nasceu? ");
         
-        cliente.setData_de_nascimento(JOptionPane.showInputDialog("Data de Nascimento: "));
+        String[] dataFormatada = data.split("/");
         
-        cliente.setEnderecos(JOptionPane.showInputDialog("Endereço: "));
-
+        LocalDate datanascimento = LocalDate.of(Integer.parseInt(dataFormatada[2]), Integer.parseInt(dataFormatada[1]), Integer.parseInt(dataFormatada[0]));
+       
+        String cidade = JOptionPane.showInputDialog("Em que cidade você reside atualmente? ");
+        
+        String logradouro = JOptionPane.showInputDialog("Qual o nome da sua rua (logradouro)?  ");
+        
+        String bairro = JOptionPane.showInputDialog("Qual o bairro: ");
+        
+        String numeroCasa = JOptionPane.showInputDialog("Qual o número da sua casa? ");
+        
+        int numeroEndereco = Integer.parseInt(numeroCasa);
+        
+        String uf = JOptionPane.showInputDialog("Estado :");
+        
+        
+        Enderecos enderecos = new Enderecos(logradouro, numeroEndereco, bairro, cidade, uf);
+        Cliente cliente = new Cliente(nomeCliente, cpfCliente, datanascimento, enderecos);
         Conta conta = new Conta(cliente);
+        Conta.add(conta);
 
-        contasBancarias.add(conta);
-        JOptionPane.showMessageDialog(null,"Conta criada com sucesso! ");
+        JOptionPane.showMessageDialog(null, "Sua conta foi criada com sucesso!");
         operacoes();
     }
     
@@ -89,10 +100,9 @@ public class Agencia {
     
     public static void deposito() {
 
-        int numeroConta = 
-                Integer.parseInt(JOptionPane.showInputDialog(null, "Número da conta para depósito: "));
-
-        Conta conta = encontrarConta(numeroConta);
+        String numeroConta = (JOptionPane.showInputDialog(null, "Número da conta para depósito: "));
+        int numeroContaDef = Integer.parseInt(numeroConta);
+        Conta conta = encontrarConta(numeroContaDef);
 
         if(conta != null) {
             Double valorDeposito = 
@@ -145,7 +155,7 @@ public class Agencia {
             }else {
                 JOptionPane.showMessageDialog(null,"Conta para transferência não encontrada!!!");
             }
-
+            operacoes();
         
     }    
 
