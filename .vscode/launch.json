@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Launch Agencia",
             "request": "launch",
+            "mainClass": "exe.Agencia",
+            "projectName": "BancoJava-master_f752966b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Agencia",
+            "request": "launch",
             "mainClass": "programa.Agencia",
             "projectName": "BancoJava-master_f752966b"
         },

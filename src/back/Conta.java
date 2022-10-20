@@ -1,4 +1,4 @@
-package programa;
+package back;
 
 
 import javax.swing.JOptionPane;
@@ -10,12 +10,15 @@ public class Conta {
 
     private static int counterContas = 1;
 
+    private static int counterAgencia = 1234;
+
     private int agencia;
     private int numeroConta;
     private Cliente cliente;
     private double saldo = 0.0;
 
     public Conta(Cliente cliente) {
+        this.agencia = counterAgencia;
         this.cliente = cliente;
         this.numeroConta = counterContas;
         counterContas += 1;
@@ -24,9 +27,9 @@ public class Conta {
     public static int getCounterContas() {
         return counterContas;
     }
-
-    public static void setCounterContas(int counterContas) {
-        Conta.counterContas = counterContas;
+    
+    public static int getCounterAgencia() {
+        return counterAgencia;
     }
 
     public int getAgencia() {
@@ -72,20 +75,6 @@ public class Conta {
 
 
 
-    public String toString() {
-        return "\nNumero da conta: " + this.getNumeroConta() +
-                "\nAgencia: " +this.getAgencia() +
-                "\nNome: " + this.cliente.getNome() +
-                "\nCPF: " + this.cliente.getCpf() +
-                "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
-                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
-                "\nLogradouro: " + this.getLogradouro() +
-                "\nNumero: " + this.getNumeroCasa() +
-                "\nBairro: " + this.getBairro() +
-                "\nCidade: " + this.getCidade() +
-                "\nUF : " + this.getUf() +
-                "\n";
-    }
 
     public void sacar(Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
@@ -115,10 +104,22 @@ public class Conta {
         }
     }
 
-    public static void add(Conta conta) {
+
+
+    public String toString() {
+        return "\nNumero da conta: " + this.getNumeroConta() +
+                "\nAgencia: " +this.getAgencia() +
+                "\nNome: " + this.cliente.getNome() +
+                "\nCPF: " + this.cliente.getCpf() +
+                "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
+                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
+                "\nLogradouro: " + this.getLogradouro() +
+                "\nNumero: " + this.getNumeroCasa() +
+                "\nBairro: " + this.getBairro() +
+                "\nCidade: " + this.getCidade() +
+                "\nUF : " + this.getUf() +
+                "\n";
     }
-
-
 
 
 

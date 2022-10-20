@@ -1,20 +1,18 @@
-package programa;
-
-import java.time.LocalDate;
+package back;
 
 public class Cliente {
 
 
     private String nome;
     private String cpf;
-    private final LocalDate dataDeNascimento;
+    private final String dataDeNascimento;
     private Enderecos enderecos;
     
 
-    public Cliente(String nome, String cpf, LocalDate dataDeNascimento, Enderecos enderecos) {
+    public Cliente(String nome, String cpf, String data, Enderecos enderecos) {
         this.nome = nome;
         this.cpf = cpf;
-        this.dataDeNascimento = dataDeNascimento;
+        this.dataDeNascimento = data;
         this.enderecos = enderecos;
     }
 
@@ -30,11 +28,8 @@ public class Cliente {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
-    public LocalDate getDataDeNascimento() {
+    public String getDataDeNascimento() {
         return dataDeNascimento;
     }
 
@@ -57,10 +52,5 @@ public class Cliente {
     public String getUf() {
         return this.enderecos.getUf();
     }
-    
-
-    public void setEnderecos(String showInputDialog) {
-    }
-
-          
+            
 }

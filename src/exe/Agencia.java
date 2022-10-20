@@ -1,11 +1,14 @@
-package programa;
+package exe;
 
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
+
+import back.Cliente;
+import back.Conta;
+import back.Enderecos;
 
 
 public class Agencia {
@@ -26,7 +29,7 @@ public class Agencia {
                     "2° Sacar \n" +
                     "3° Transferir \n" +
                     "4° Depositar \n" +
-                    "5° Listar Contas Existentes \n" +
+                    "5° Listar Contas Existentes \n" + //fazer função extrato
                     "6° Fechar \n"));
 
 
@@ -55,16 +58,12 @@ public class Agencia {
 
     private static void criarConta() {
 
-        String nomeCliente = JOptionPane.showInputDialog("Qual o seu nome? ");
+        String nome = JOptionPane.showInputDialog("Qual o seu nome? ");
         
-        String cpfCliente = JOptionPane.showInputDialog("Qual o seu CPF? ");
+        String cpf = JOptionPane.showInputDialog("Qual o seu CPF? ");
         
         String data = JOptionPane.showInputDialog("Que dia você nasceu? ");
-        
-        String[] dataFormatada = data.split("/");
-        
-        LocalDate datanascimento = LocalDate.of(Integer.parseInt(dataFormatada[2]), Integer.parseInt(dataFormatada[1]), Integer.parseInt(dataFormatada[0]));
-       
+               
         String cidade = JOptionPane.showInputDialog("Em que cidade você reside atualmente? ");
         
         String logradouro = JOptionPane.showInputDialog("Qual o nome da sua rua (logradouro)?  ");
@@ -79,9 +78,9 @@ public class Agencia {
         
         
         Enderecos enderecos = new Enderecos(logradouro, numeroEndereco, bairro, cidade, uf);
-        Cliente cliente = new Cliente(nomeCliente, cpfCliente, datanascimento, enderecos);
+        Cliente cliente = new Cliente(nome, cpf, data, enderecos);
         Conta conta = new Conta(cliente);
-        Conta.add(conta);
+        contasBancarias.add(conta);
 
         JOptionPane.showMessageDialog(null, "Sua conta foi criada com sucesso!");
         operacoes();
