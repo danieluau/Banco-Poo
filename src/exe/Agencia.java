@@ -62,19 +62,19 @@ public class Agencia {
         
         String cpf = JOptionPane.showInputDialog("Qual o seu CPF? ");
         
-        String data = JOptionPane.showInputDialog("Que dia você nasceu? ");
-               
-        String cidade = JOptionPane.showInputDialog("Em que cidade você reside atualmente? ");
-        
+        String data = JOptionPane.showInputDialog("Qual a sua data de nascimento? ");
+                   
         String logradouro = JOptionPane.showInputDialog("Qual o nome da sua rua (logradouro)?  ");
         
-        String bairro = JOptionPane.showInputDialog("Qual o bairro: ");
-        
+        String bairro = JOptionPane.showInputDialog("Qual o bairro ");
+
         String numeroCasa = JOptionPane.showInputDialog("Qual o número da sua casa? ");
-        
+
         int numeroEndereco = Integer.parseInt(numeroCasa);
         
-        String uf = JOptionPane.showInputDialog("Estado :");
+        String cidade = JOptionPane.showInputDialog("Em que cidade você reside atualmente? ");
+        
+        String uf = JOptionPane.showInputDialog("Em que estado você reside atualmente? ");
         
         
         Enderecos enderecos = new Enderecos(logradouro, numeroEndereco, bairro, cidade, uf);
