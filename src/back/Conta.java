@@ -8,9 +8,9 @@ import utilidades.Utils;
 
 public class Conta {
 
-    private static int counterContas = 1;
+    private static int counterContas = 1001;
 
-    private static int counterAgencia = 1001;
+    private static int counterAgencia = 1001001;
 
     private int agencia;
     private int numeroConta;

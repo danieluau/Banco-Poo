@@ -52,9 +52,5 @@ public class Cliente {
     public String getUf() {
         return this.enderecos.getUf();
     }
-
-    public String getUfEndereco() {
-        return null;
-    }
             
 }

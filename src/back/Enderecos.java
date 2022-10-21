@@ -20,31 +20,36 @@ public class Enderecos {
     public String getLogradouro() {
         return logradouro;
     }
-    public int getNumeroCasa() {
-        return numeroCasa;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
+    public int getNumeroCasa() {
+        return numeroCasa;}
+
+    public void setNumeroCasa(int numeroCasa) {
+        this.numeroCasa = numeroCasa;
+    }    
+    
     public String getBairro() {
         return bairro;
     }
+    
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
     public String getCidade() {
         return cidade;
     }
+    
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }    
+    
     public String getUf() {
         return uf;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-    public void setNumeroCasa(int numeroCasa) {
-        this.numeroCasa = numeroCasa;
-    }
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
     public void setUf(String uf) {
         this.uf = uf;
     }
