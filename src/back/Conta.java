@@ -102,14 +102,14 @@ public class Conta {
 
 
     public String toString() {
-        return "\nNumero da conta: " + this.getNumeroConta() +
-                "\nAgencia: " +this.getAgencia() +
+        return "\nNúmero da conta: " + this.getNumeroConta() +
+                "\nAgência: " +this.getAgencia() +
                 "\nNome: " + this.cliente.getNome() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
                 "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
                 "\nLogradouro: " + this.cliente.getLogradouro() +
-                "\nNumero: " + this.cliente.getNumeroCasa() +
+                "\nNúmero da casa: " + this.cliente.getNumeroCasa() +
                 "\nBairro: " + this.cliente.getBairro() +
                 "\nCidade: " + this.cliente.getCidade() +
                 "\nUF : " + this.cliente.getUf() +

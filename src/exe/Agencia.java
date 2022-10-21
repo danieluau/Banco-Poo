@@ -66,7 +66,7 @@ public class Agencia {
                    
         String logradouro = JOptionPane.showInputDialog("Qual o nome da sua rua (logradouro)?  ");
         
-        String bairro = JOptionPane.showInputDialog("Qual o seu bairro ");
+        String bairro = JOptionPane.showInputDialog("Qual o seu bairro? ");
 
         String numeroCasa = JOptionPane.showInputDialog("Qual o número da sua casa? ");
 
