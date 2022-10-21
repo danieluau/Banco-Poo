@@ -1,6 +1,5 @@
 package exe;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,12 +15,12 @@ public class Agencia {
     static Scanner input = new Scanner(System.in);
     static ArrayList<Conta> contasBancarias;
     
-    public static void main(String[] args){
+    public static void main(String[] args) {
         contasBancarias = new ArrayList<Conta>();
         operacoes();
     }
 
-    public static void operacoes(){
+    public static void operacoes() {
 
         int operacao = 
                 Integer.parseInt(JOptionPane.showInputDialog("O que você deseja? \n" +
@@ -56,17 +55,18 @@ public class Agencia {
 
     }
 
-    private static void criarConta() {
+    private static void criarConta()  {
 
         String nome = JOptionPane.showInputDialog("Qual o seu nome? ");
         
         String cpf = JOptionPane.showInputDialog("Qual o seu CPF? ");
         
         String data = JOptionPane.showInputDialog("Qual a sua data de nascimento? ");
+
                    
         String logradouro = JOptionPane.showInputDialog("Qual o nome da sua rua (logradouro)?  ");
         
-        String bairro = JOptionPane.showInputDialog("Qual o bairro ");
+        String bairro = JOptionPane.showInputDialog("Qual o seu bairro ");
 
         String numeroCasa = JOptionPane.showInputDialog("Qual o número da sua casa? ");
 
@@ -114,9 +114,9 @@ public class Agencia {
         }
         
     
-    public static void sacar() {
+    public static void sacar()  {
         int numero_conta = 
-                Integer.parseInt(JOptionPane.showInputDialog("Numero da conta para realizar o saque: "));
+                Integer.parseInt(JOptionPane.showInputDialog("Número da conta para realizar o saque: "));
 
         Conta conta= encontrarConta(numero_conta);
 
@@ -133,12 +133,12 @@ public class Agencia {
 
     public static void transferir() {
             int numeroContaRemetente = 
-                    Integer.parseInt(JOptionPane.showInputDialog("Numero da conta destino para realizar a transferencia: "));
+                    Integer.parseInt(JOptionPane.showInputDialog("Número da conta destino para realizar a transferencia: "));
             Conta contaRemetente = encontrarConta(numeroContaRemetente);
 
             if(contaRemetente != null) {
                 int numeroContaDestino = 
-                        Integer.parseInt(JOptionPane.showInputDialog("Numero da conta destino para realizar a transferencia: "));
+                        Integer.parseInt(JOptionPane.showInputDialog("Número da conta destino para realizar a transferencia: "));
 
                 Conta contaDestino = encontrarConta(numeroContaDestino);
 
