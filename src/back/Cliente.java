@@ -8,12 +8,13 @@ public class Cliente {
     private String cpf;
     private String dataDeNascimento;
     private Enderecos enderecos;
+    private Conta conta;
     
 
-    public Cliente(String nome, String cpf, String dataDenascimento, Enderecos enderecos) {
+    public Cliente(String nome, String cpf, String dataDeNascimento, Enderecos enderecos) {
         this.nome = nome;
         this.cpf = cpf;
-        this.dataDeNascimento = dataDenascimento;
+        this.dataDeNascimento = dataDeNascimento;
         this.enderecos = enderecos;
     }
 
@@ -36,7 +37,7 @@ public class Cliente {
     public Enderecos getEnderecos() {
         return getEnderecos();
     }
-    
+
     public String getLogradouro() {
         return this.enderecos.getLogradouro();
     }
@@ -56,5 +57,9 @@ public class Cliente {
     public String getUf() {
         return this.enderecos.getUf();
     }
-            
+
+    public Conta getConta() {
+        return conta;
+    }
+     
 }

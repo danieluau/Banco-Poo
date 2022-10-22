@@ -3,12 +3,10 @@ package back;
 
 import javax.swing.JOptionPane;
 
-import utilidades.Utils;
-
 
 public class Conta {
 
-    private static int counterContas = 1001;
+    private static int counterContas = 1;
 
     private static int counterAgencia = 1001001;
 
@@ -71,6 +69,18 @@ public class Conta {
         return this.cliente.getBairro();
     }
 
+
+    public void deposito(Double valor) {
+        if (valor > 0) {
+            setSaldo(getSaldo() + valor);
+            JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null,"Não foi possível realizar o seu depósito");
+        }
+    }
+    
+    
+    
     public void sacar(Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
             setSaldo(getSaldo() - valor);
@@ -80,22 +90,14 @@ public class Conta {
         }
     }
 
-    public void transferir(Conta contaParaDeposito, Double valor) {
+    public void transferir(Conta contaDeposito, Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
             setSaldo(getSaldo() - valor);
 
-            contaParaDeposito.saldo = contaParaDeposito.getSaldo() + valor;
+            contaDeposito.saldo = contaDeposito.getSaldo() + valor;
             JOptionPane.showMessageDialog(null,"Tranferencia realizada com sucesso");
         } else {
             JOptionPane.showMessageDialog(null,"Não foi possivel realizar a transferencia!");
-        }
-    }
-    public void deposito(Double valor) {
-        if (valor > 0) {
-            setSaldo(getSaldo() + valor);
-            JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso");
-        } else {
-            JOptionPane.showMessageDialog(null,"Não foi possível realizar o seu depósito");
         }
     }
 
@@ -107,7 +109,7 @@ public class Conta {
                 "\nNome: " + this.cliente.getNome() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
-                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
+                "\nSaldo: " + (this.getSaldo()) +
                 "\nLogradouro: " + this.cliente.getLogradouro() +
                 "\nNúmero da casa: " + this.cliente.getNumeroCasa() +
                 "\nBairro: " + this.cliente.getBairro() +

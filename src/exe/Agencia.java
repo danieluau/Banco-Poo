@@ -1,5 +1,6 @@
 package exe;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,7 +29,7 @@ public class Agencia {
                     "2° Sacar \n" +
                     "3° Transferir \n" +
                     "4° Depositar \n" +
-                    "5° Listar Contas Existentes \n" + //fazer função extrato
+                    "5° Listar Contas \n" + //fazer função extrato
                     "6° Fechar \n"));
 
 
@@ -42,7 +43,7 @@ public class Agencia {
         case 4:
             deposito(); 
         case 5:
-            listarContas();       
+            listarContas();      
         case 6:
         JOptionPane.showMessageDialog(null, "OK. Obrigado por usar nossa plataforma!!!");
         System.exit(0);
@@ -61,9 +62,8 @@ public class Agencia {
         
         String cpf = JOptionPane.showInputDialog("Qual o seu CPF? ");
         
-        String data = JOptionPane.showInputDialog("Qual a sua data de nascimento? ");
-
-                   
+        String dataNascimento = JOptionPane.showInputDialog("Qual a sua data de nascimento? ");
+          
         String logradouro = JOptionPane.showInputDialog("Qual o nome da sua rua (logradouro)?  ");
         
         String bairro = JOptionPane.showInputDialog("Qual o seu bairro? ");
@@ -78,7 +78,7 @@ public class Agencia {
         
         
         Enderecos enderecos = new Enderecos(logradouro, numeroEndereco, bairro, cidade, uf);
-        Cliente cliente = new Cliente(nome, cpf, data, enderecos);
+        Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos);
         Conta conta = new Conta(cliente);
         contasBancarias.add(conta);
 
@@ -88,10 +88,11 @@ public class Agencia {
     
     private static Conta encontrarConta(int numeroConta) {
         Conta conta = null;
-        if(contasBancarias.size() > 0) {
-            for(Conta c: contasBancarias) {
-                if(c.getNumeroConta() == numeroConta);
-                conta= c;
+        if (contasBancarias.size() > 0) {
+            for (Conta c : contasBancarias) {
+                if (c.getNumeroConta() == numeroConta) {
+                    conta = c;
+                }
             }
         }
         return conta;
@@ -100,12 +101,14 @@ public class Agencia {
     public static void deposito() {
 
         String numeroConta = (JOptionPane.showInputDialog(null, "Número da conta para depósito: "));
+        
         int numeroContaDef = Integer.parseInt(numeroConta);
+        
         Conta conta = encontrarConta(numeroContaDef);
 
         if(conta != null) {
             Double valorDeposito = 
-                    Double.parseDouble((JOptionPane.showInputDialog(null, "Valor do depósito: ")));
+                Double.parseDouble((JOptionPane.showInputDialog(null, "Valor do depósito: ")));
             conta.deposito(valorDeposito);
         }else {
             JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o depósito!!!");
@@ -114,11 +117,11 @@ public class Agencia {
         }
         
     
-    public static void sacar()  {
-        int numero_conta = 
-                Integer.parseInt(JOptionPane.showInputDialog("Número da conta para realizar o saque: "));
 
-        Conta conta= encontrarConta(numero_conta);
+    public static void sacar()  {
+        String numeroConta = (JOptionPane.showInputDialog("Número da conta para realizar o saque: "));
+        int numeroContaDef = Integer.parseInt(numeroConta);
+        Conta conta= encontrarConta(numeroContaDef);
 
         if(conta != null) {
             Double valorSaque = 
@@ -132,21 +135,26 @@ public class Agencia {
     }
 
     public static void transferir() {
-            int numeroContaRemetente = 
-                    Integer.parseInt(JOptionPane.showInputDialog("Número da conta destino para realizar a transferencia: "));
-            Conta contaRemetente = encontrarConta(numeroContaRemetente);
+            String numeroContaRemetente = 
+                (JOptionPane.showInputDialog("Número da conta destino para realizar a transferencia: "));
+            int numeroContaRemetenteDef = 
+                Integer.parseInt(numeroContaRemetente);
+            Conta contaRemetente = encontrarConta(numeroContaRemetenteDef);
 
             if(contaRemetente != null) {
-                int numeroContaDestino = 
-                        Integer.parseInt(JOptionPane.showInputDialog("Número da conta destino para realizar a transferencia: "));
-
-                Conta contaDestino = encontrarConta(numeroContaDestino);
+                String numeroContaDestino = 
+                        (JOptionPane.showInputDialog("Número da conta destino para realizar a transferencia: "));
+                int numeroContaDestinoDef = 
+                        Integer.parseInt(numeroContaDestino);
+                Conta contaDestino = encontrarConta(numeroContaDestinoDef);
 
                 if(contaDestino != null) {
-                    Double valor = 
-                            Double.parseDouble(JOptionPane.showInputDialog("Valor da transferência: "));
+                    String valor = 
+                            JOptionPane.showInputDialog("Quanto você deseja transferir? ");
+                    double valorDef = Integer.parseInt(valor);
+                    contaDestino.transferir(contaRemetente, valorDef);
 
-                    contaRemetente.transferir(contaDestino, valor);
+                    contaRemetente.transferir(contaDestino, valorDef);
                 }else {
                     JOptionPane.showMessageDialog(null,"Conta para transferência não encontrada!!!");
                 }
@@ -170,9 +178,8 @@ public class Agencia {
         operacoes();
     }
 
-            
 
-}
+}            
 
 
 
