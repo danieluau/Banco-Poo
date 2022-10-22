@@ -25,23 +25,23 @@ public class Agencia {
 
         int operacao = 
                 Integer.parseInt(JOptionPane.showInputDialog("O que você deseja? \n" +
-                    "1° Criar Conta \n" +
-                    "2° Sacar \n" +
-                    "3° Transferir \n" +
-                    "4° Depositar \n" +
-                    "5° Listar Contas \n" + //fazer função extrato
-                    "6° Fechar \n"));
+                    " 1°| Criar Conta \n" +
+                    " 2°| Depositar \n" +
+                    " 3°| Sacar \n " +
+                    "4°| Transferir \n" +
+                    " 5°| Listar Contas \n" + //fazer função extrato
+                    " 6°| Sair \n"));
 
 
         switch(operacao){
         case 1:
             criarConta();
         case 2:
-            sacar();      
+            deposito();      
         case 3:
-            transferir();      
+            sacar();      
         case 4:
-            deposito(); 
+            transferir();
         case 5:
             listarContas();      
         case 6:
@@ -97,7 +97,8 @@ public class Agencia {
         }
         return conta;
     }    
-    
+
+
     public static void deposito() {
 
         String numeroConta = (JOptionPane.showInputDialog(null, "Número da conta para depósito: "));
@@ -107,9 +108,11 @@ public class Agencia {
         Conta conta = encontrarConta(numeroContaDef);
 
         if(conta != null) {
-            Double valorDeposito = 
+            Double valor = 
                 Double.parseDouble((JOptionPane.showInputDialog(null, "Valor do depósito: ")));
-            conta.deposito(valorDeposito);
+
+                conta.deposito(valor);
+            
         }else {
             JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o depósito!!!");
         }
@@ -136,7 +139,7 @@ public class Agencia {
 
     public static void transferir() {
             String numeroContaRemetente = 
-                (JOptionPane.showInputDialog("Número da conta destino para realizar a transferencia: "));
+                (JOptionPane.showInputDialog("Número da sua conta para realizar a transferencia: "));
             int numeroContaRemetenteDef = 
                 Integer.parseInt(numeroContaRemetente);
             Conta contaRemetente = encontrarConta(numeroContaRemetenteDef);
@@ -158,9 +161,7 @@ public class Agencia {
                 }else {
                     JOptionPane.showMessageDialog(null,"Conta para transferência não encontrada!!!");
                 }
-            
-            }else {
-                JOptionPane.showMessageDialog(null,"Conta para transferência não encontrada!!!");
+
             }
             operacoes();
         

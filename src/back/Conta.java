@@ -3,17 +3,21 @@ package back;
 
 import javax.swing.JOptionPane;
 
+import utilidades.Utils;
+
+
+
 
 public class Conta {
 
     private static int counterContas = 1;
 
-    private static int counterAgencia = 1001001;
+    private static int counterAgencia = 1001;
 
     private int agencia;
     private int numeroConta;
     private Cliente cliente;
-    private double saldo = 0.0;
+    private double saldo = 0.00;
 
     public Conta(Cliente cliente) {
         this.agencia = counterAgencia;
@@ -70,6 +74,7 @@ public class Conta {
     }
 
 
+
     public void deposito(Double valor) {
         if (valor > 0) {
             setSaldo(getSaldo() + valor);
@@ -97,10 +102,8 @@ public class Conta {
             contaDeposito.saldo = contaDeposito.getSaldo() + valor;
             JOptionPane.showMessageDialog(null,"Tranferencia realizada com sucesso");
         } else {
-            JOptionPane.showMessageDialog(null,"Não foi possivel realizar a transferencia!");
         }
     }
-
 
 
     public String toString() {
@@ -109,7 +112,7 @@ public class Conta {
                 "\nNome: " + this.cliente.getNome() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
-                "\nSaldo: " + (this.getSaldo()) +
+                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
                 "\nLogradouro: " + this.cliente.getLogradouro() +
                 "\nNúmero da casa: " + this.cliente.getNumeroCasa() +
                 "\nBairro: " + this.cliente.getBairro() +
