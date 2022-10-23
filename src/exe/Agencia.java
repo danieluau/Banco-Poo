@@ -1,6 +1,5 @@
 package exe;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,6 +19,7 @@ public class Agencia {
         contasBancarias = new ArrayList<Conta>();
         operacoes();
     }
+
 
     public static void operacoes() {
 
@@ -70,14 +70,14 @@ public class Agencia {
 
         String numeroCasa = JOptionPane.showInputDialog("Qual o número da sua casa? ");
 
-        int numeroEndereco = Integer.parseInt(numeroCasa);
+        int numeroCasaDef = Integer.parseInt(numeroCasa);
         
         String cidade = JOptionPane.showInputDialog("Em que cidade você reside atualmente? ");
         
         String uf = JOptionPane.showInputDialog("Em que estado você reside atualmente? ");
         
         
-        Enderecos enderecos = new Enderecos(logradouro, numeroEndereco, bairro, cidade, uf);
+        Enderecos enderecos = new Enderecos(logradouro, numeroCasaDef, bairro, cidade, uf);
         Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos);
         Conta conta = new Conta(cliente);
         contasBancarias.add(conta);
