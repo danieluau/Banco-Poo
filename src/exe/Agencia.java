@@ -93,8 +93,8 @@ public class Agencia {
     private static void criarConta()  {
 
 
-        String tipoConta = JOptionPane.showInputDialog("\n Qual tipo de conta você deseja criar?  ");
-        
+        String tipoConta = JOptionPane.showInputDialog(" Qual tipo de conta você deseja criar? \n Digite 1 para Conta Corrente ou 2 para Conta Poupança ");
+
         int tipoContaDef = Integer.parseInt(tipoConta);
         
         String nome = JOptionPane.showInputDialog("Qual o seu nome? ");
@@ -120,24 +120,20 @@ public class Agencia {
         String senha = JOptionPane.showInputDialog("Digite uma senha para sua conta: ");
         
         Enderecos enderecos = new Enderecos(logradouro, numeroCasaDef, bairro, cidade, uf);
-        
 
-        if (tipoContaDef == 0){
-            ContaCorrente conta = new ContaCorrente(null, senha);
-            contasBancarias.add(conta);
-            JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
-
-        }else if(tipoContaDef == 1){
-            ContaPoupanca conta = new ContaPoupanca(null, senha);
-            contasBancarias.add(conta);
-            JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
-        }
 
         Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos, email, senha);    
-        Conta conta = new Conta(cliente, tipoConta);
-        contasBancarias.add(conta);
 
-        JOptionPane.showMessageDialog(null, "Sua conta foi criada com sucesso!");
+        if (tipoContaDef == 1){
+            ContaCorrente conta = new ContaCorrente(cliente, tipoContaDef);
+            contasBancarias.add(conta);
+            JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
+
+        }else if(tipoContaDef == 2){
+            ContaPoupanca conta = new ContaPoupanca(cliente, tipoContaDef);
+            contasBancarias.add(conta);
+            JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
+        };
         operacoes();
     }
     
