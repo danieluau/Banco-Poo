@@ -3,7 +3,6 @@ package exe;
 import java.util.ArrayList;
 //import java.util.List;
 import java.util.Scanner;
-
 import javax.swing.JOptionPane;
 
 import back.Cliente;
@@ -11,6 +10,7 @@ import back.Conta;
 import back.ContaCorrente;
 import back.ContaPoupanca;
 import back.Enderecos;
+
 
 
 public class Agencia {
@@ -92,16 +92,16 @@ public class Agencia {
 
     private static void criarConta()  {
 
-
-        String tipoConta = JOptionPane.showInputDialog(" Qual tipo de conta você deseja criar? \n Digite 1 para Conta Corrente ou 2 para Conta Poupança ");
-
-        int tipoContaDef = Integer.parseInt(tipoConta);
+        String [] opcoes = {"Corrente", "Poupança"};
+        int tipoConta = JOptionPane.showOptionDialog(null, "Qual tipo de conta você deseja criar? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes);
         
         String nome = JOptionPane.showInputDialog("Qual o seu nome? ");
         
         String cpf = JOptionPane.showInputDialog("Qual o seu CPF? ");
         
         String email = JOptionPane.showInputDialog("Qual o seu e-mail?");
+
+        String telefone = JOptionPane.showInputDialog("Qual o seu telefone?");
 
         String dataNascimento = JOptionPane.showInputDialog("Qual a sua data de nascimento? ");
           
@@ -122,17 +122,17 @@ public class Agencia {
         Enderecos enderecos = new Enderecos(logradouro, numeroCasaDef, bairro, cidade, uf);
 
 
-        Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos, email, senha);    
+        Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos, telefone, email, senha);    
 
-        if (tipoContaDef == 1){
-            ContaCorrente conta = new ContaCorrente(cliente, tipoContaDef);
+        if (tipoConta == 0){
+            ContaCorrente conta = new ContaCorrente(cliente, tipoConta);
             contasBancarias.add(conta);
             JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
 
-        }else if(tipoContaDef == 2){
-            ContaPoupanca conta = new ContaPoupanca(cliente, tipoContaDef);
+        }else if(tipoConta == 1){
+            ContaPoupanca conta = new ContaPoupanca(cliente, tipoConta);
             contasBancarias.add(conta);
-            JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
+            JOptionPane.showMessageDialog(null, "Sua conta de tipo Poupança foi criada com sucesso!!!");
         };
         operacoes();
     }
@@ -167,7 +167,7 @@ public class Agencia {
                 conta.deposito(valor);
             
         }else {
-            JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o depósito!!!");
+            JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o depósito.");
         }
         operacoes();
         }
@@ -185,7 +185,7 @@ public class Agencia {
             conta.sacar(valorSaque);
 
         }else {
-            JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o saque!!!");
+            JOptionPane.showMessageDialog(null,"Conta não encontrada, não foi possivel realizar o saque.");
         }
         operacoes();
     }
@@ -212,7 +212,7 @@ public class Agencia {
 
                     contaRemetente.transferir(contaDestino, valorDef);
                 }else {
-                    JOptionPane.showMessageDialog(null,"Conta para transferência não encontrada!!!");
+                    JOptionPane.showMessageDialog(null,"Conta para transferência não encontrada.");
                 }
 
             }
@@ -242,13 +242,5 @@ public class Agencia {
         menu.add(2);
 
         Object[] menuLogin = menu.toArray();
-        int opcaoEscolhida = JOptionPane.showOptionDialog(null, "1. Conta Corrente \n. 2. Conta Poupança \n.","Qual tipo de conta você deseja criar?", JOptionPane.OK_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE, null, menuLogin, null);     
-
-        if (opcaoEscolhida == 0){
-            tipoConta = "Corrente";
-        } 
-
-        else if (opcaoEscolhida == 1){
-            tipoConta = "Poupança";
-        }   
+        int opcaoEscolhida = JOptionPane.showOptionDialog(null, "1. Conta Corrente \n. 2. Conta Poupança \n.","Qual tipo de conta você deseja criar?", JOptionPane.OK_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE, null, menuLogin, null);       
         */

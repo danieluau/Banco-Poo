@@ -10,20 +10,24 @@ public class Cliente {
     private String cpf;
     private String dataDeNascimento;
     private Enderecos enderecos;
+    private String telefone;
     private String email;
     private String senha;
+
     private List<Conta> contas = new ArrayList<>();
     private List<ContaCorrente> contaCorrentes = new ArrayList<>();
     private List<ContaPoupanca> contaPoupancas = new ArrayList<>();
     
 
-    public Cliente(String nome, String cpf, String dataDeNascimento, Enderecos enderecos, String senha, String email) {
+    public Cliente(String nome, String cpf, String dataDeNascimento, Enderecos enderecos, String telefone, String senha, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
         this.enderecos = enderecos;
+        this.telefone = telefone;
         this.email= email;
         this.senha = senha;
+        
     }
 
     public String getNome() {
@@ -54,6 +58,10 @@ public class Cliente {
         return getEnderecos();
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+    
     public String getLogradouro() {
         return this.enderecos.getLogradouro();
     }
@@ -95,5 +103,8 @@ public class Cliente {
     public void addConta(ContaPoupanca contaPoupanca){
         this.contas.add(contaPoupanca);
     }
+
+
+
 
 }

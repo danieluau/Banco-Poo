@@ -5,27 +5,42 @@ import javax.swing.JOptionPane;
 import utilidades.Utils;
 
 public class ContaPoupanca extends Conta {
+    
+    private double rendimento;
+
+    Sms sms = new Sms();
+    Email email = new Email();
 
     public ContaPoupanca(Cliente cliente, int tipoConta) {
         super(cliente, tipoConta);
+        this.rendimento = 0.10;
         
     }
 
-    private double rendimento;
 
-
-    public double getRendimento() {
-        this.rendimento = this.getSaldo();
-        return this.rendimento;
+    public double getRendimento(){
+        return rendimento;
     }
-
+    
+    public void setRendimento(Double rendimento){
+        this.rendimento = rendimento;
+    }
+    
     @Override
     public void deposito(Double valor) {
         if (valor > 0) {
-            setSaldo((getSaldo() + valor));
-            JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso");
+            setSaldo(getSaldo() + valor);
+            String [] answer = {"Email", "Sms"};
+            int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
+                if(option == 0) {
+                    email.mandarNotificacao("Foi feito um depósito ", valor);
+                }
+                if(option == 1){
+                    sms.mandarNotificacao("Foi feito um depósito  ", valor);
+                }
+            JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso.");
         } else {
-            JOptionPane.showMessageDialog(null,"Não foi possível realizar o seu depósito");
+            JOptionPane.showMessageDialog(null,"Não foi possível realizar o seu depósito.");
         }
     }
 
@@ -35,19 +50,27 @@ public class ContaPoupanca extends Conta {
             setSaldo(getSaldo() - valor);
 
             contaDeposito.saldo = contaDeposito.getSaldo() + valor;
-            JOptionPane.showMessageDialog(null,"Tranferencia realizada com sucesso");
+            String [] answer = {"Email", "Sms"};
+            int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
+                if(option == 0) {
+                email.mandarNotificacao("Foi feita uma transferência ", valor);
+                }
+                if(option == 1){
+                    sms.mandarNotificacao("Foi feita uma transferência ", valor);
+                }
+            JOptionPane.showMessageDialog(null,"Transferência realizada com sucesso.");
         } else {
         }
     }
-    
     @Override
     public String toString() {
         return "\nNúmero da conta: " + this.getNumeroConta() +
                 "\nAgência: " +this.getAgencia() +
-                "\nTipo de conta: " + getContaTipo() +
                 "\nNome: " + this.cliente.getNome() +
+                "\nTipo de conta: " + getContaTipo() +
                 "\nEmail: " + this.cliente.getSenha() +
-                "\nSenha : " + this.cliente.getEmail() +
+                "\nTelefone: " + this.cliente.getTelefone() +
+                "\nSenha: " + this.cliente.getEmail() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
                 "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
