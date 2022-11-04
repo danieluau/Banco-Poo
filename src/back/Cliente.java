@@ -13,8 +13,8 @@ public class Cliente {
     private String email;
     private String senha;
     private List<Conta> contas = new ArrayList<>();
-    //private List<ContaCorrente> contaCorrentes = new ArrayList<>();
-    //private List<ContaPoupanca> contaPoupancas = new ArrayList<>();
+    private List<ContaCorrente> contaCorrentes = new ArrayList<>();
+    private List<ContaPoupanca> contaPoupancas = new ArrayList<>();
     
 
     public Cliente(String nome, String cpf, String dataDeNascimento, Enderecos enderecos, String senha, String email) {
@@ -78,22 +78,22 @@ public class Cliente {
         return contas;
     }
     
-    /*public List<ContaCorrente> getContaCorrentes() {
+    public List<ContaCorrente> getContaCorrentes() {
         return contaCorrentes;
     }
     
     public List<ContaPoupanca> getContaPoupancas() {
         return contaPoupancas;
-    }*/
+    }
 
     public void addConta(Conta conta){
         this.contas.add(conta);
     }
-    /*public void addContaCorrente(ContaCorrente contaCorrente){
+    public void addContaCorrente(ContaCorrente contaCorrente){
         this.contas.add(contaCorrente);
     }
     public void addConta(ContaPoupanca contaPoupanca){
         this.contas.add(contaPoupanca);
-    }*/
+    }
 
 }

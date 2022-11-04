@@ -11,22 +11,21 @@ import utilidades.Utils;
 public class Conta {
 
     private static int counterContas = 1;
-
     private static int counterAgencia = 1001;
 
     private int agencia;
     private int numeroConta;
     private Cliente cliente;
-    private double saldo = 0.00;
-    private int tipoConta;
+    protected double saldo = 0.00;
+    private String tipoConta;
 
-    public Conta(Cliente cliente) {
+    public Conta(Cliente cliente, String tipoConta) {
         this.agencia = counterAgencia;
         this.cliente = cliente;
         this.numeroConta = counterContas;
         counterContas += 1;
         counterAgencia += 1;
-        //this.tipoConta = tipoConta;
+        this.tipoConta = tipoConta;
     }
 
 
@@ -37,7 +36,7 @@ public class Conta {
     public static int getCounterAgencia() {
         return counterAgencia;
     }
-    public int getTipoConta() {
+    public String getTipoConta() {
         return tipoConta;
     }
 
@@ -62,9 +61,9 @@ public class Conta {
     }
 
     public String getContaTipo(){
-        if(getTipoConta() == 0){
+        if(getTipoConta() == "0"){
             return "Conta Corrente";
-        }else if(getTipoConta() == 1){
+        }else if(getTipoConta() == "1"){
             return "Conta Poupança";
         }
     return null;}

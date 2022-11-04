@@ -1,18 +1,19 @@
-/*package back;
+package back;
 
 import javax.swing.JOptionPane;
 
 public class ContaPoupanca extends Conta {
 
-    private double rendimento;
-
-    public ContaPoupanca() {
-        super(numeroAgencia, numeroConta, saldo, cliente);
-        this.rendimento = this.getSaldo() * 0.10;
-
+    public ContaPoupanca(Cliente cliente, String tipoConta) {
+        super(cliente, tipoConta);
+        //TODO Auto-generated constructor stub
     }
 
+    private double rendimento;
+
+
     public double getRendimento() {
+        this.rendimento = this.getSaldo() * 0.10;
         return this.rendimento;
     }
 
@@ -34,6 +35,3 @@ public class ContaPoupanca extends Conta {
                    + this.getRendimento() + "]";
     }
 }
-
-
-/* */

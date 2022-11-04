@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 
 import back.Cliente;
 import back.Conta;
-//import back.ContaCorrente;
-//import back.ContaPoupanca;
+import back.ContaCorrente;
+import back.ContaPoupanca;
 import back.Enderecos;
 
 
@@ -93,8 +93,10 @@ public class Agencia {
     private static void criarConta()  {
 
 
-        //int tipoConta = JOptionPane.showOptionDialog(null, "1. Conta Corrente \n. 2. Conta Poupança \n.","Qual tipo de conta você deseja criar?", JOptionPane.OK_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE, null, null, null, null);
-
+        String tipoConta = JOptionPane.showInputDialog("\n Qual tipo de conta você deseja criar?  ");
+        
+        int tipoContaDef = Integer.parseInt(tipoConta);
+        
         String nome = JOptionPane.showInputDialog("Qual o seu nome? ");
         
         String cpf = JOptionPane.showInputDialog("Qual o seu CPF? ");
@@ -120,19 +122,19 @@ public class Agencia {
         Enderecos enderecos = new Enderecos(logradouro, numeroCasaDef, bairro, cidade, uf);
         
 
-        /*if (tipoContaDef == 0){
-            ContaCorrente conta = new ContaCorrente();
+        if (tipoContaDef == 0){
+            ContaCorrente conta = new ContaCorrente(null, senha);
             contasBancarias.add(conta);
             JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
 
         }else if(tipoContaDef == 1){
-            ContaPoupanca conta = new ContaPoupanca();
+            ContaPoupanca conta = new ContaPoupanca(null, senha);
             contasBancarias.add(conta);
             JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
-        }/* */
+        }
 
         Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos, email, senha);    
-        Conta conta = new Conta(cliente);
+        Conta conta = new Conta(cliente, tipoConta);
         contasBancarias.add(conta);
 
         JOptionPane.showMessageDialog(null, "Sua conta foi criada com sucesso!");
