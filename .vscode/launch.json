@@ -9,6 +9,13 @@
             "name": "Launch Agencia",
             "request": "launch",
             "mainClass": "exe.Agencia",
+            "projectName": "atividade-poo-banco-projeto-daniel_1814f2bc"
+        },
+        {
+            "type": "java",
+            "name": "Launch Agencia",
+            "request": "launch",
+            "mainClass": "exe.Agencia",
             "projectName": "BancoJava-master_f752966b"
         },
         {

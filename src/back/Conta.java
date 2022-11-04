@@ -18,6 +18,7 @@ public class Conta {
     private int numeroConta;
     private Cliente cliente;
     private double saldo = 0.00;
+    private int tipoConta;
 
     public Conta(Cliente cliente) {
         this.agencia = counterAgencia;
@@ -25,7 +26,9 @@ public class Conta {
         this.numeroConta = counterContas;
         counterContas += 1;
         counterAgencia += 1;
+        //this.tipoConta = tipoConta;
     }
+
 
     public static int getCounterContas() {
         return counterContas;
@@ -33,6 +36,9 @@ public class Conta {
     
     public static int getCounterAgencia() {
         return counterAgencia;
+    }
+    public int getTipoConta() {
+        return tipoConta;
     }
 
     public int getAgencia() {
@@ -54,6 +60,14 @@ public class Conta {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+
+    public String getContaTipo(){
+        if(getTipoConta() == 0){
+            return "Conta Corrente";
+        }else if(getTipoConta() == 1){
+            return "Conta Poupança";
+        }
+    return null;}
 
     public String getClienteEnderecocidade() {
         return this.cliente.getCidade();
@@ -110,6 +124,8 @@ public class Conta {
         return "\nNúmero da conta: " + this.getNumeroConta() +
                 "\nAgência: " +this.getAgencia() +
                 "\nNome: " + this.cliente.getNome() +
+                "\nEmail: " + this.cliente.getSenha() +
+                "\nSenha : " + this.cliente.getEmail() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
                 "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
@@ -120,6 +136,8 @@ public class Conta {
                 "\nUF : " + this.cliente.getUf() +
                 "\n";
     }
+
+
 
 
 

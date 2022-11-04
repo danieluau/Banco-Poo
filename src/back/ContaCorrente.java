@@ -1,17 +1,20 @@
-/*public class ContaCorrente extends Conta {
+/*package back;
+
+public class ContaCorrente extends Conta {
     
     private double chequeEspecial;
 
-    public ContaCorrente(int numeroAgencia, int numeroConta, double saldo, Cliente cliente, double chequeEspecial) {
+    public ContaCorrente() {
         
-        super(Agencia, numeroConta, saldo, cliente);
-        this.chequeEspecial = chequeEspecial;
+        super(numeroAgencia, numeroConta, saldo, cliente);
+        //this.chequeEspecial = chequeEspecial;
         
     }
 
     public double getChequeEspecial() {
         return this.chequeEspecial;
     }
+
 
     @Override
     public String toString() {
@@ -22,4 +25,4 @@
                    + this.getChequeEspecial() + "]";
     }
 
-} */
+} /* */
