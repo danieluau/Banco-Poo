@@ -43,21 +43,13 @@ public class ContaPoupanca extends Conta {
     public void transferir(Conta contaDeposito, Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
             Double taxa = valor * 5/100;
-            contaDeposito.setSaldo((contaDeposito.getSaldo() - taxa));
-            setSaldo(getSaldo() - valor - taxa);
+            setSaldo(getSaldo() - valor + taxa);
 
 
-            contaDeposito.saldo = contaDeposito.getSaldo() + valor + taxa;
-            String [] answer = {"Email", "Sms"};
-            int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
-                if(option == 0) {
-                email.mandarNotificacao("Foi feita uma transferência ", valor);
-                }
-                if(option == 1){
-                    sms.mandarNotificacao("Foi feita uma transferência ", valor);
-                }
+            contaDeposito.saldo = contaDeposito.getSaldo() + valor - taxa;
             JOptionPane.showMessageDialog(null,"Transferência realizada com sucesso.");
         } else {
+            JOptionPane.showMessageDialog(null,"Não foi possível realizar sua transferência.");
         }
     }
         
@@ -91,6 +83,3 @@ public class ContaPoupanca extends Conta {
 
 
         }
-
-
-

@@ -20,33 +20,6 @@ public class Agencia {
     
     
 
-    /*public static void main (String[] args) throws Exception {
-        List<Integer> menu = new ArrayList<>();
-        contasBancarias = new ArrayList<Conta>();
-        operacoes();
-
-        menu.add(1);
-        menu.add(2);
-        menu.add(3);
-
-        int menuEscolhido = 1;
-        while (menu.get(menuEscolhido) != 3) {
-            menuEscolhido = seeMenu(menu);
-            if (menu.get(menuEscolhido)==1) {
-                criarConta();
-            }
-            else if (menu.get(menuEscolhido) == 2) {
-                //logar();
-            }
-        }
-    }
-    
-    
-    public int seeMenu(List<Integer> menu){
-        Object[] menusArray = menu.toArray();
-        int opcaoEscolhida = JOptionPane.showOptionDialog(null,"1. Não tenho conta \n. Login \n. Sair", "Menu", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, menusArray, null);
-        return opcaoEscolhida;
-    }*/
     
     public static void main(String[] args) {
         contasBancarias = new ArrayList<Conta>();
@@ -242,3 +215,32 @@ public class Agencia {
         Object[] menuLogin = menu.toArray();
         int opcaoEscolhida = JOptionPane.showOptionDialog(null, "1. Conta Corrente \n. 2. Conta Poupança \n.","Qual tipo de conta você deseja criar?", JOptionPane.OK_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE, null, menuLogin, null);       
         */
+
+        
+    /*public static void main (String[] args) throws Exception {
+        List<Integer> menu = new ArrayList<>();
+        contasBancarias = new ArrayList<Conta>();
+        operacoes();
+
+        menu.add(1);
+        menu.add(2);
+        menu.add(3);
+
+        int menuEscolhido = 1;
+        while (menu.get(menuEscolhido) != 3) {
+            menuEscolhido = seeMenu(menu);
+            if (menu.get(menuEscolhido)==1) {
+                criarConta();
+            }
+            else if (menu.get(menuEscolhido) == 2) {
+                //logar();
+            }
+        }
+    }
+    
+    
+    public int seeMenu(List<Integer> menu){
+        Object[] menusArray = menu.toArray();
+        int opcaoEscolhida = JOptionPane.showOptionDialog(null,"1. Não tenho conta \n. Login \n. Sair", "Menu", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, menusArray, null);
+        return opcaoEscolhida;
+    }*/

@@ -6,13 +6,16 @@ import utilidades.Utils;
 
 public class ContaCorrente extends Conta {
     
-    double chequeEspecial = 1000.0;
+    private double chequeEspecial = 1000.0;
+    private int counterTransfer;
 
     Sms sms = new Sms();
     Email email = new Email();
 
     public ContaCorrente(Cliente cliente, int tipoConta) {
         super(cliente, tipoConta);
+        this.chequeEspecial = (double) 1000;
+        this.counterTransfer= 0;
         
     }
 
@@ -20,35 +23,50 @@ public class ContaCorrente extends Conta {
         return chequeEspecial;
     }
 
+
+
+
+
+
+    @Override
+    public void sacar(Double valor) {
+        double cheque = valor - this.getSaldo();
+        if (valor > this.getSaldo());
+        this.setSaldo(this.getSaldo() - valor);
+        this.setSaldo(this.getChequeEspecial() - cheque);
+        JOptionPane.showMessageDialog(null, "Valor sacado com sucesso.");
+    }
+
+
+
     @Override
     public void deposito(Double valor) {
         super.deposito(valor);
     }
 
-    @Override
-    public void sacar(Double valor) {
-        super.sacar(valor);
-    }
+
 
  
     @Override
     public void transferir(Conta contaDeposito, Double valor) {
-        if (valor > 0 && this.getSaldo() >= valor) {
-            setSaldo(getSaldo() - valor);
 
-            contaDeposito.saldo = contaDeposito.getSaldo() + valor;
-            String [] answer = {"Email", "Sms"};
-            int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
-                if(option == 0) {
-                email.mandarNotificacao("Foi feito uma transferência ", valor);
-                }
-                if(option == 1){
-                    sms.mandarNotificacao("Foi feita uma transferência ", valor);
-                }
-            JOptionPane.showMessageDialog(null,"Transferência realizada com sucesso.");
-        } else {
+        this.counterTransfer += 1;
+        if(this.counterTransfer < 2){
+        super.transferir(contaDeposito, valor);
+    }else {
+        if (this.getSaldo() >= valor && valor > 0) {
+            Double taxa = valor * 5/100;
+            contaDeposito.setSaldo((contaDeposito.getSaldo() - taxa));
+            setSaldo(getSaldo() - valor - taxa);
+
+            contaDeposito.saldo = contaDeposito.getSaldo() + valor + taxa;
         }
     }
+
+    }
+
+        
+
 
     @Override
     public String toString() {
@@ -72,6 +90,6 @@ public class ContaCorrente extends Conta {
 
 
 
-
+    
 
 } 
