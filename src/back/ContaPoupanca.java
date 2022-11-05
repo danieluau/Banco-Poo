@@ -35,24 +35,31 @@ public class ContaPoupanca extends Conta {
     }
 
     @Override
+    public void sacar(Double valor) {
+        super.sacar(valor);
+    }
+
+    @Override
     public void transferir(Conta contaDeposito, Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
-            double tax = valor * 0.05;
-            contaDeposito.setSaldo(valor + (contaDeposito.getSaldo() - tax));
+            Double taxa = valor * 5/100;
+            contaDeposito.setSaldo((contaDeposito.getSaldo() - taxa));
             setSaldo(getSaldo() - valor);
+            Double transfe = valor - taxa;
+
+            contaDeposito.saldo = contaDeposito.getSaldo() + valor;
             String [] answer = {"Email", "Sms"};
             int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
                 if(option == 0) {
-                email.mandarNotificacao("Foi feita uma transferência  ", valor);
+                email.mandarNotificacao("Foi feita uma transferência ", transfe);
                 }
                 if(option == 1){
-                    sms.mandarNotificacao("Foi feita uma transferência ", valor);
+                    sms.mandarNotificacao("Foi feita uma transferência ", transfe);
                 }
             JOptionPane.showMessageDialog(null,"Transferência realizada com sucesso.");
         } else {
         }
-}
-
+    }
         
         
     
@@ -77,11 +84,7 @@ public class ContaPoupanca extends Conta {
             }
 
 
-    @Override
-    public void sacar(Double valor) {
-        // TODO Auto-generated method stub
-        super.sacar(valor);
-    }
+
 
 
 

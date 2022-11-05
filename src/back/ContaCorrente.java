@@ -20,21 +20,17 @@ public class ContaCorrente extends Conta {
         return chequeEspecial;
     }
 
-    @Override    
-    public void sacar (Double valor) {
-        if (this.getSaldo() > 0) {
-            String [] answer = {"Email", "Sms"};
-            int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
-            if(option == 0) {
-            email.mandarNotificacao("Foi feito um saque ", valor);
-            }
-            if(option == 1){
-                sms.mandarNotificacao("Foi feito um saque ", valor);
-            }
-            
-            }
-        }
-    
+    @Override
+    public void deposito(Double valor) {
+        super.deposito(valor);
+    }
+
+    @Override
+    public void sacar(Double valor) {
+        super.sacar(valor);
+    }
+
+ 
     @Override
     public void transferir(Conta contaDeposito, Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
@@ -53,7 +49,7 @@ public class ContaCorrente extends Conta {
         } else {
         }
     }
-    
+
     @Override
     public String toString() {
         return "\nNúmero da conta: " + this.getNumeroConta() +
@@ -73,6 +69,9 @@ public class ContaCorrente extends Conta {
                 "\nUF : " + this.cliente.getUf() +
                 "\n";
     }
+
+
+
 
 
 
