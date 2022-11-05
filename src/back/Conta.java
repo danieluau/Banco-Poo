@@ -150,7 +150,7 @@ public class Conta {
                 "\nAgência: " +this.getAgencia() +
                 "\nNome: " + this.cliente.getNome() +
                 "\nTipo de conta: " + getContaTipo() +
-                "\nEmail: " + this.cliente.getSenha() +
+                "\nEmail: " + this.cliente.getEmail() +
                 "\nTelefone: " + this.cliente.getTelefone() +
                 "\nSenha: " + this.cliente.getEmail() +
                 "\nCPF: " + this.cliente.getCpf() +

@@ -56,9 +56,8 @@ public class ContaCorrente extends Conta {
                 "\nAgência: " +this.getAgencia() +
                 "\nNome: " + this.cliente.getNome() +
                 "\nTipo de conta: " + getContaTipo() +
-                "\nEmail: " + this.cliente.getSenha() +
                 "\nTelefone: " + this.cliente.getTelefone() +
-                "\nSenha: " + this.cliente.getEmail() +
+                "\nEmail: " + this.cliente.getEmail() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
                 "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
