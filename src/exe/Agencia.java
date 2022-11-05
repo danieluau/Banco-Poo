@@ -93,7 +93,7 @@ public class Agencia {
     private static void criarConta()  {
 
         String [] opcoes = {"Corrente", "Poupança"};
-        int tipoConta = JOptionPane.showOptionDialog(null, "Qual tipo de conta você deseja criar? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes);
+        int contaTipo = JOptionPane.showOptionDialog(null, "Qual tipo de conta você deseja criar? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes);
         
         String nome = JOptionPane.showInputDialog("Qual o seu nome? ");
         
@@ -124,13 +124,13 @@ public class Agencia {
 
         Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos, telefone, email, senha);    
 
-        if (tipoConta == 0){
-            ContaCorrente conta = new ContaCorrente(cliente, tipoConta);
+        if (contaTipo == 0){
+            ContaCorrente conta = new ContaCorrente(cliente, contaTipo);
             contasBancarias.add(conta);
             JOptionPane.showMessageDialog(null, "Sua conta de tipo Corrente foi criada com sucesso!!!");
 
-        }else if(tipoConta == 1){
-            ContaPoupanca conta = new ContaPoupanca(cliente, tipoConta);
+        }else if(contaTipo == 1){
+            ContaPoupanca conta = new ContaPoupanca(cliente, contaTipo);
             contasBancarias.add(conta);
             JOptionPane.showMessageDialog(null, "Sua conta de tipo Poupança foi criada com sucesso!!!");
         };

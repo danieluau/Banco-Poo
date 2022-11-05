@@ -26,6 +26,8 @@ public class ContaPoupanca extends Conta {
         this.rendimento = rendimento;
     }
 
+
+
     @Override
     public void deposito(Double valor) {
         valor += (valor * 10) /100;
@@ -35,13 +37,13 @@ public class ContaPoupanca extends Conta {
     @Override
     public void transferir(Conta contaDeposito, Double valor) {
         if (valor > 0 && this.getSaldo() >= valor) {
+            double tax = valor * 0.05;
+            contaDeposito.setSaldo(valor + (contaDeposito.getSaldo() - tax));
             setSaldo(getSaldo() - valor);
-
-            contaDeposito.saldo = contaDeposito.getSaldo() + valor;
             String [] answer = {"Email", "Sms"};
             int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
                 if(option == 0) {
-                email.mandarNotificacao("Foi feito uma transferência ", valor);
+                email.mandarNotificacao("Foi feita uma transferência  ", valor);
                 }
                 if(option == 1){
                     sms.mandarNotificacao("Foi feita uma transferência ", valor);
@@ -49,7 +51,7 @@ public class ContaPoupanca extends Conta {
             JOptionPane.showMessageDialog(null,"Transferência realizada com sucesso.");
         } else {
         }
-    }
+}
 
         
         
@@ -73,6 +75,16 @@ public class ContaPoupanca extends Conta {
                 "\nUF : " + this.cliente.getUf() +
                 "\n"; 
             }
+
+
+    @Override
+    public void sacar(Double valor) {
+        // TODO Auto-generated method stub
+        super.sacar(valor);
+    }
+
+
+
 
 
 

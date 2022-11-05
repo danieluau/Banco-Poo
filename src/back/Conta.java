@@ -64,9 +64,9 @@ public class Conta {
     }
 
     public String getContaTipo(){
-        if(getContaType() == 1){
+        if(getContaType() == 0){
             return "Conta Corrente";
-        }else if(getContaType() == 2){
+        }else if(getContaType() == 1){
             return "Conta Poupança";
         }
     return null;}
@@ -112,6 +112,7 @@ public class Conta {
     
     public void sacar (Double valor) {
         if (this.getSaldo() > 0) {
+            setSaldo(getSaldo() - valor);
             String [] answer = {"Email", "Sms"};
         int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
             if(option == 0) {

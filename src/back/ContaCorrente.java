@@ -6,7 +6,7 @@ import utilidades.Utils;
 
 public class ContaCorrente extends Conta {
     
-    private double chequeEspecial = 1000;
+    double chequeEspecial = 1000.0;
 
     Sms sms = new Sms();
     Email email = new Email();
@@ -44,7 +44,7 @@ public class ContaCorrente extends Conta {
             String [] answer = {"Email", "Sms"};
             int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
                 if(option == 0) {
-                email.mandarNotificacao("Foi feita uma transferência  ", valor);
+                email.mandarNotificacao("Foi feito uma transferência ", valor);
                 }
                 if(option == 1){
                     sms.mandarNotificacao("Foi feita uma transferência ", valor);
@@ -53,6 +53,7 @@ public class ContaCorrente extends Conta {
         } else {
         }
     }
+    
     @Override
     public String toString() {
         return "\nNúmero da conta: " + this.getNumeroConta() +
