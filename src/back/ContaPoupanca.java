@@ -7,7 +7,7 @@ import utilidades.Utils;
 public class ContaPoupanca extends Conta {
     
     private double rendimento;
-
+    
     Sms sms = new Sms();
     Email email = new Email();
 
@@ -25,23 +25,11 @@ public class ContaPoupanca extends Conta {
     public void setRendimento(Double rendimento){
         this.rendimento = rendimento;
     }
-    
+
     @Override
     public void deposito(Double valor) {
-        if (valor > 0) {
-            setSaldo(getSaldo() + valor);
-            String [] answer = {"Email", "Sms"};
-            int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
-                if(option == 0) {
-                    email.mandarNotificacao("Foi feito um depósito ", valor);
-                }
-                if(option == 1){
-                    sms.mandarNotificacao("Foi feito um depósito  ", valor);
-                }
-            JOptionPane.showMessageDialog(null,"Seu depósito foi realizado com sucesso.");
-        } else {
-            JOptionPane.showMessageDialog(null,"Não foi possível realizar o seu depósito.");
-        }
+        valor += (valor * 10) /100;
+        super.deposito(valor);
     }
 
     @Override
@@ -53,7 +41,7 @@ public class ContaPoupanca extends Conta {
             String [] answer = {"Email", "Sms"};
             int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
                 if(option == 0) {
-                email.mandarNotificacao("Foi feita uma transferência ", valor);
+                email.mandarNotificacao("Foi feito uma transferência ", valor);
                 }
                 if(option == 1){
                     sms.mandarNotificacao("Foi feita uma transferência ", valor);
@@ -62,6 +50,10 @@ public class ContaPoupanca extends Conta {
         } else {
         }
     }
+
+        
+        
+    
     @Override
     public String toString() {
         return "\nNúmero da conta: " + this.getNumeroConta() +
@@ -79,7 +71,12 @@ public class ContaPoupanca extends Conta {
                 "\nBairro: " + this.cliente.getBairro() +
                 "\nCidade: " + this.cliente.getCidade() +
                 "\nUF : " + this.cliente.getUf() +
-                "\n";
-    }
+                "\n"; 
+            }
 
-    }
+
+
+        }
+
+
+
