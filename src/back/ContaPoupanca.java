@@ -44,17 +44,17 @@ public class ContaPoupanca extends Conta {
         if (valor > 0 && this.getSaldo() >= valor) {
             Double taxa = valor * 5/100;
             contaDeposito.setSaldo((contaDeposito.getSaldo() - taxa));
-            setSaldo(getSaldo() - valor);
-            Double transfe = valor - taxa;
+            setSaldo(getSaldo() - valor - taxa);
 
-            contaDeposito.saldo = contaDeposito.getSaldo() + valor;
+
+            contaDeposito.saldo = contaDeposito.getSaldo() + valor + taxa;
             String [] answer = {"Email", "Sms"};
             int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
                 if(option == 0) {
-                email.mandarNotificacao("Foi feita uma transferência ", transfe);
+                email.mandarNotificacao("Foi feita uma transferência ", valor);
                 }
                 if(option == 1){
-                    sms.mandarNotificacao("Foi feita uma transferência ", transfe);
+                    sms.mandarNotificacao("Foi feita uma transferência ", valor);
                 }
             JOptionPane.showMessageDialog(null,"Transferência realizada com sucesso.");
         } else {

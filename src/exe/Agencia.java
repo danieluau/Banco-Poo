@@ -117,12 +117,10 @@ public class Agencia {
         
         String uf = JOptionPane.showInputDialog("Em que estado você reside atualmente? ");
         
-        String senha = JOptionPane.showInputDialog("Digite uma senha para sua conta: ");
-        
         Enderecos enderecos = new Enderecos(logradouro, numeroCasaDef, bairro, cidade, uf);
 
 
-        Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos, telefone, email, senha);    
+        Cliente cliente = new Cliente(nome, cpf, dataNascimento, enderecos, telefone, email);    
 
         if (contaTipo == 0){
             ContaCorrente conta = new ContaCorrente(cliente, contaTipo);
