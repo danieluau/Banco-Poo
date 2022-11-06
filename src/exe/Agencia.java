@@ -34,7 +34,7 @@ public class Agencia {
                     " 2°| Depositar \n" +
                     " 3°| Sacar \n " +
                     "4°| Transferir \n" +
-                    " 5°| Listar Contas \n" + //fazer função extrato
+                    " 5°| Extrato \n" + //fazer função extrato
                     " 6°| Sair \n"));
 
 
@@ -48,7 +48,7 @@ public class Agencia {
         case 4:
             transferir();
         case 5:
-            listarContas();      
+            extrato();      
         case 6:
         JOptionPane.showMessageDialog(null, "OK. Obrigado por usar nossa plataforma!!!");
         System.exit(0);
@@ -191,14 +191,13 @@ public class Agencia {
         
     }    
 
-    public static void listarContas() {
+    public static void extrato() {
         if(contasBancarias.size() > 0) {
             for (Conta conta : contasBancarias) {
                 JOptionPane.showMessageDialog(null, conta);
             }
         }else {
-            JOptionPane.showMessageDialog(null,"Não existem contas cadastradas ainda.");
-            
+            JOptionPane.showMessageDialog(null,"Não existem contas cadastradas ainda.");            
         }
         operacoes();
     }
@@ -207,16 +206,7 @@ public class Agencia {
 
 }            
 
-
-        /*List<Integer> menu = new ArrayList<>();
-        menu.add(1);
-        menu.add(2);
-
-        Object[] menuLogin = menu.toArray();
-        int opcaoEscolhida = JOptionPane.showOptionDialog(null, "1. Conta Corrente \n. 2. Conta Poupança \n.","Qual tipo de conta você deseja criar?", JOptionPane.OK_CANCEL_OPTION , JOptionPane.PLAIN_MESSAGE, null, menuLogin, null);       
-        */
-
-        
+      
     /*public static void main (String[] args) throws Exception {
         List<Integer> menu = new ArrayList<>();
         contasBancarias = new ArrayList<Conta>();

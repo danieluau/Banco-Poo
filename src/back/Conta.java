@@ -111,29 +111,27 @@ public class Conta {
         if (valor > 0 && this.getSaldo() >= valor) {
             setSaldo(getSaldo() - valor);
             contaDeposito.saldo = contaDeposito.getSaldo() + valor;
-        } else {
-            
         }
     }
 
 
     public String toString() {
-        return "\nNúmero da conta: " + this.getNumeroConta() +
-                "\nAgência: " +this.getAgencia() +
-                "\nNome: " + this.cliente.getNome() +
-                "\nTipo de conta: " + getContaTipo() +
-                "\nEmail: " + this.cliente.getEmail() +
-                "\nTelefone: " + this.cliente.getTelefone() +
-                "\nSenha: " + this.cliente.getEmail() +
-                "\nCPF: " + this.cliente.getCpf() +
-                "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
-                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
-                "\nLogradouro: " + this.cliente.getLogradouro() +
-                "\nNúmero da casa: " + this.cliente.getNumeroCasa() +
-                "\nBairro: " + this.cliente.getBairro() +
-                "\nCidade: " + this.cliente.getCidade() +
-                "\nUF : " + this.cliente.getUf() +
-                "\n";
+        return 
+            "\nNúmero da conta: " + this.getNumeroConta() +
+            "\nAgência: " +this.getAgencia() +
+            "\nNome: " + this.cliente.getNome() +
+            "\nTipo de conta: " + getContaTipo() +
+            "\nTelefone: " + this.cliente.getTelefone() +
+            "\nEmail: " + this.cliente.getEmail() +
+            "\nCPF: " + this.cliente.getCpf() +
+            "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
+            "\nSaldo: " + Utils.doubletoString(this.getSaldo()) + 
+            "\nLogradouro: " + this.cliente.getLogradouro() +
+            "\nNúmero da casa: " + this.cliente.getNumeroCasa() +
+            "\nBairro: " + this.cliente.getBairro() +
+            "\nCidade: " + this.cliente.getCidade() +
+            "\nUF : " + this.cliente.getUf() +
+            "\n";
     }
 
 
