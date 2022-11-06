@@ -8,62 +8,90 @@ public class ContaCorrente extends Conta {
     
     private double chequeEspecial = 1000.0;
     private int counterTransfer;
-
+    private double tax = 0.05;
+    
     Sms sms = new Sms();
     Email email = new Email();
 
     public ContaCorrente(Cliente cliente, int tipoConta) {
         super(cliente, tipoConta);
-        this.chequeEspecial = (double) 1000;
-        this.counterTransfer= 0;
-        
+        this.counterTransfer = 0;  
     }
 
     public double getChequeEspecial(){
         return chequeEspecial;
     }
 
+    public void setChequeEspecial(double chequeEspecial) {
+        this.chequeEspecial = chequeEspecial;
+    }
 
+    public int getCounterTransfer() {
+        return counterTransfer;
+    }
 
-
+    public double getValorDisponivel(double chequeEspecial){
+        return getSaldo() + getChequeEspecial();
+    }
+    
+    public void contadorTransferencia(ContaCorrente contaDeposito, double valor){
+        this.counterTransfer += 1;
+        if(this.counterTransfer >2){
+            Double tax = (valor * 5)/100;
+            setChequeEspecial(getChequeEspecial() - tax);
+        }
+    }
 
 
     @Override
     public void sacar(Double valor) {
-        double cheque = valor - this.getSaldo();
-        if (valor > this.getSaldo());
-        this.setSaldo(this.getSaldo() - valor);
-        this.setSaldo(this.getChequeEspecial() - cheque);
-        JOptionPane.showMessageDialog(null, "Valor sacado com sucesso.");
+        double limiteSaque = this.getSaldo() + this.getChequeEspecial();
+        if ((limiteSaque - valor) >= 0){
+            JOptionPane.showMessageDialog(null, "Valor sacado.");
+            this.setSaldo(this.getSaldo() - valor);
+            JOptionPane.showMessageDialog(null, "Valor retirado do cheque especial.");
+        String [] answer = {"Email", "Sms"};
+        int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
+            if(option == 0) {
+            email.mandarNotificacao("Foi feito uma transferência ", valor);
+            }
+            if(option == 1){
+                sms.mandarNotificacao("Foi feita uma transferência ", valor);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Você não possui saldo suficiente.");
+        }
     }
-
-
-
-    @Override
-    public void deposito(Double valor) {
-        super.deposito(valor);
-    }
-
+        
+    
 
 
  
     @Override
     public void transferir(Conta contaDeposito, Double valor) {
 
-        this.counterTransfer += 1;
-        if(this.counterTransfer < 2){
+    if(this.counterTransfer < 2){
         super.transferir(contaDeposito, valor);
-    }else {
-        if (this.getSaldo() >= valor && valor > 0) {
-            Double taxa = valor * 5/100;
-            contaDeposito.setSaldo((contaDeposito.getSaldo() - taxa));
-            setSaldo(getSaldo() - valor - taxa);
+    }else{
+        if (this.getSaldo() >= valor) {
+            super.setSaldo(super.getSaldo() - valor * tax);
+            super.setSaldo(super.getSaldo() - valor);            
+            contaDeposito.setSaldo(contaDeposito.getSaldo() + valor);   
 
-            contaDeposito.saldo = contaDeposito.getSaldo() + valor + taxa;
+            String [] answer = {"Email", "Sms"};
+            int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
+            if(option == 0) {
+                email.mandarNotificacao("Foi feito uma transferência ", valor);
+            }
+            if(option == 1){
+                sms.mandarNotificacao("Foi feita uma transferência ", valor);
+            }
+            
         }
-    }
 
+        
     }
+}
 
         
 
@@ -78,7 +106,7 @@ public class ContaCorrente extends Conta {
                 "\nEmail: " + this.cliente.getEmail() +
                 "\nCPF: " + this.cliente.getCpf() +
                 "\nData de Nascimento: " + this.cliente.getDataDeNascimento() +
-                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) +
+                "\nSaldo: " + Utils.doubletoString(this.getSaldo()) + 
                 "\nLogradouro: " + this.cliente.getLogradouro() +
                 "\nNúmero da casa: " + this.cliente.getNumeroCasa() +
                 "\nBairro: " + this.cliente.getBairro() +
@@ -90,6 +118,9 @@ public class ContaCorrente extends Conta {
 
 
 
+
+
+
     
 
-} 
+}

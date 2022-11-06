@@ -2,18 +2,22 @@ package back;
 
 import javax.swing.JOptionPane;
 
+//import javax.swing.JOptionPane;
+
 import utilidades.Utils;
 
 public class ContaPoupanca extends Conta {
     
     private double rendimento;
+    private double tax = 0.05;
     
     Sms sms = new Sms();
     Email email = new Email();
 
     public ContaPoupanca(Cliente cliente, int tipoConta) {
         super(cliente, tipoConta);
-        this.rendimento = 0.10;
+        this.rendimento = 1.10;
+        
         
     }
 
@@ -32,27 +36,48 @@ public class ContaPoupanca extends Conta {
     public void deposito(Double valor) {
         valor += (valor * 10) /100;
         super.deposito(valor);
-    }
-
-    @Override
-    public void sacar(Double valor) {
-        super.sacar(valor);
-    }
-
-    @Override
-    public void transferir(Conta contaDeposito, Double valor) {
-        if (valor > 0 && this.getSaldo() >= valor) {
-            Double taxa = valor * 5/100;
-            setSaldo(getSaldo() - valor + taxa);
-
-
-            contaDeposito.saldo = contaDeposito.getSaldo() + valor - taxa;
-            JOptionPane.showMessageDialog(null,"Transferência realizada com sucesso.");
-        } else {
-            JOptionPane.showMessageDialog(null,"Não foi possível realizar sua transferência.");
+        String [] answer = {"Email", "Sms"};
+        int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
+        if(option == 0) {
+            email.mandarNotificacao("Foi feito uma transferência ", valor);
+        }
+        if(option == 1){
+            sms.mandarNotificacao("Foi feita uma transferência ", valor);
         }
     }
-        
+
+
+    public void sacar (Double valor) {
+        if (this.getSaldo() > 0) {
+            setSaldo(getSaldo() - valor);
+            String [] answer = {"Email", "Sms"};
+        int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
+            if(option == 0) {
+            email.mandarNotificacao("Foi feito um saque ", valor);
+            }
+            if(option == 1){
+                sms.mandarNotificacao("Foi feito um saque ", valor);
+            }
+            
+            }
+        }
+
+
+        public void transferir(Conta contaDeposito, Double valor) {
+            if (this.getSaldo() >= valor) {
+                super.setSaldo(super.getSaldo() - valor * tax);
+                super.setSaldo(super.getSaldo() - valor);            
+                contaDeposito.setSaldo(contaDeposito.getSaldo() + valor);              
+                String [] answer = {"Email", "Sms"};
+                int option = JOptionPane.showOptionDialog(null, "Como você deseja ser notificado dessa transação? ", null, JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, answer, answer);
+                if(option == 0) {
+                    email.mandarNotificacao("Foi feito uma transferência ", valor);
+                }
+                if(option == 1){
+                    sms.mandarNotificacao("Foi feita uma transferência ", valor);
+                }
+            }
+        }
         
     
     @Override
